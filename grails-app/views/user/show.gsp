@@ -99,7 +99,7 @@
 				<li class="fieldcontain">
 					<span id="maritalStatus-label" class="property-label"><g:message code="user.maritalStatus.label" default="Marital Status" /></span>
 					
-						<span class="property-value" aria-labelledby="maritalStatus-label"><g:link controller="maritalStatusEnum" action="show" id="${userInstance?.maritalStatus?.id}">${userInstance?.maritalStatus?.encodeAsHTML()}</g:link></span>
+						<span class="property-value" aria-labelledby="maritalStatus-label"><g:link controller="maritalStatusEnum" action="show" >${userInstance?.maritalStatus?.name?.encodeAsHTML()}</g:link></span>
 					
 				</li>
 				</g:if>
@@ -118,15 +118,6 @@
 					<span id="address-label" class="property-label"><g:message code="user.address.label" default="Address" /></span>
 					
 						<span class="property-value" aria-labelledby="address-label"><g:link controller="address" action="show" id="${userInstance?.address?.id}">${userInstance?.address?.encodeAsHTML()}</g:link></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${userInstance?.schedule}">
-				<li class="fieldcontain">
-					<span id="schedule-label" class="property-label"><g:message code="user.schedule.label" default="Schedule" /></span>
-					
-						<span class="property-value" aria-labelledby="schedule-label"><g:link controller="schedule" action="show" id="${userInstance?.schedule?.id}">${userInstance?.schedule?.encodeAsHTML()}</g:link></span>
 					
 				</li>
 				</g:if>

@@ -15,6 +15,7 @@
   		<asset:stylesheet src="application.css"/>
         <asset:stylesheet src="custom.css"/>
 		<asset:javascript src="application.js"/>
+        <asset:javascript src="jquery-1.11.1.min.js"/>
 		<g:layoutHead/>
 
 	</head>

@@ -21,12 +21,13 @@ class User {
         institutionalMail nullable: true, blank: true, email: true
         username nullable: true, blank: false, unique: true
         password nullable: true, blank: false, password: true, minSize: 8, maxSize: 16
-        birthdate nullable: true, max: new Date()
+        birthdate nullable: true, min: new Date()
         cpf nullable: false, blank: false
         rg nullable: false, blank: false
         maritalStatus nullable: false
         sex nullable: false, maxSize: 1
         address nullable: true
+        schedules nullable: true
     }
 
 

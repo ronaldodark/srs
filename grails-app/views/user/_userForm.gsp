@@ -1,8 +1,39 @@
 <%@ page import="br.com.igead.User" %>
+<%@ page import="br.com.igead.Employee" %>
+<%@ page import="br.com.igead.Student" %>
 <%@ page import="br.com.igead.MaritalStatusEnum" %>
 
 <div class="formname">
     <span>Informações de usuário</span>
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: userInstance, field: 'userType', 'error')} required">
+
+    <label for="userType">
+        <g:message code="user.type.label" default="Tipo de Usuário" />
+    </label>
+    <g:message code="employee.label" default="Professor" />
+    <g:radio class="userTypeSelector" name="userType" checked="true" value="employee" onchange="selectUserType()"/>
+    <g:message code="student.label" default="Bolsista" />
+    <g:radio class="userTypeSelector" name="userType" value="student" onchange="selectUserType()"/>
+</div>
+
+<div class="fieldcontain dynamicField" id="employeeField" ${hasErrors(bean: userInstance, field: 'siape', 'error')} ">
+    <label for="siape">
+        <g:message code="employee.siape.label" default="SIAPE" />
+        <span class="required-indicator">*</span>
+    </label>
+    <g:textField name="siape" required="" value="${userInstance?.siape}"/>
+
+</div>
+
+<div class="fieldcontain dynamicField" id="studentField" ${hasErrors(bean: userInstance, field: 'dre', 'error')} style="display: none">
+    <label for="siape">
+        <g:message code="employee.dre.label" default="DRE" />
+        <span class="required-indicator">*</span>
+    </label>
+    <g:textField name="siape" required="" value="${userInstance?.dre}"/>
+
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: userInstance, field: 'name', 'error')} required">
@@ -46,7 +77,7 @@
 		<g:message code="user.cpf.label" default="CPF" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:field class="cpf" name="cpf" type="textField" value="${userInstance.cpf?:""}" required=""/>
+	<g:field class="cpf" name="cpf" type="textField" value="${userInstance?.cpf?:""}" required=""/>
 
 </div>
 
@@ -55,7 +86,7 @@
 		<g:message code="user.rg.label" default="RG" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:field class="rg" name="rg" type="textField" value="${userInstance.rg ?:""}" required=""/>
+	<g:field class="rg" name="rg" type="textField" value="${userInstance?.rg ?:""}" required=""/>
 
 </div>
 
@@ -64,7 +95,7 @@
 		<g:message code="user.maritalStatus.label" default="Estado Civil" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:select id="maritalStatus" name="maritalStatus.id" from="${MaritalStatusEnum}" optionValue="name" class="many-to-one"/>
+	<g:select id="maritalStatus" name="maritalStatus" from="${MaritalStatusEnum}" optionValue="name" class="many-to-one"/>
 
 </div>
 

@@ -8,6 +8,8 @@ import grails.transaction.Transactional
 @Transactional(readOnly = true)
 class UserController {
 
+    def userService
+
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
     def index(Integer max) {
@@ -20,16 +22,11 @@ class UserController {
     }
 
     def create() {
-        respond new User(params)
     }
 
     @Transactional
-    def save(User userInstance) {
-        println "teste"
-        if (userInstance == null) {
-            notFound()
-            return
-        }
+    def save() {
+    def userInstance = userService.createUser(params)
 
         if (userInstance.hasErrors()) {
             respond userInstance.errors, view:'create'

@@ -5,3 +5,10 @@
 #addressForm {
     float: right;
 }
+.buttons {
+    clear: both;
+}
+.formname {
+    font-size: 1.2em;
+    font-weight: bold;
+}
